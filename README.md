@@ -8,7 +8,7 @@ Given an input matrix in sparse libsvm format, the class DynamicBiseriation will
 
 Usage:
 
-   $ java -jar DynamicBiseriation.jar [options] collection_file [update_files]
+    $ java -jar DynamicBiseriation.jar [options] collection_file [update_files]
 
 Arguments:
 
