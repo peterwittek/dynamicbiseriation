@@ -4,7 +4,7 @@ Two-way Incremental Seriation based on Hamiltonian Path is a package that takes 
 
 Usage
 ==
-Given an input matrix, the class DynamicBiseriation will calculate the biseriation of the matrix. Given a sequence of matrices, it will calculate the updates to the biseration. Different distance functions and biseriation heuristics are available.
+Given an input matrix in sparse libsvm format, the class DynamicBiseriation will calculate the biseriation of the matrix. Given a sequence of matrices, it will calculate the updates to the biseration. Different distance functions and biseriation heuristics are available.
 
 Usage:
 
