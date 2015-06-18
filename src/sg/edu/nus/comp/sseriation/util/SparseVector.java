@@ -400,9 +400,12 @@ public class SparseVector {
 	public static int findMinColumnIndex(VectorNode[][] mx) {
 		int result = Integer.MAX_VALUE;
 		for (int i = 0; i < mx.length; i++) {
-			if (mx[i] != null) {
-				if (mx[i][0].index < result)
-					result = mx[i][0].index;
+			if (mx[i] != null){
+				if (mx[i].length>0) {
+					if (mx[i][0].index < result) {
+						result = mx[i][0].index;
+					}
+				}
 			}
 		}
 		return result;
