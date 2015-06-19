@@ -54,14 +54,19 @@ public abstract class DistributionalOrder extends LinearOrder {
 		return nInstances / 2;
 	}
 
-	public void foldInNewInstance(VectorNode[] newInstance) {
-		nInstances++;
-		VectorNode[][] newMx = new VectorNode[nInstances][];
-		for (int i = 0; i < mx.length; i++) {
+	public void mergeUpdates(VectorNode[][] updates) {
+		VectorNode[][] newMx = new VectorNode[nInstances+updates.length][];
+		for (int i = 0; i < mx.length; ++i) {
 			newMx[i] = mx[i];
 		}
-		newMx[nInstances - 1] = newInstance;
+		for (int i = 0; i < updates.length; ++i) {
+			newMx[mx.length + i] = updates[i];
+		}
 		mx = newMx;
+	}
+	
+	public void foldInNewInstance(VectorNode[] newInstance) {
+		nInstances++;
 		order.add(findBestSlot(nInstances - 1), nInstances - 1);
 	}
 

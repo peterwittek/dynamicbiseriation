@@ -96,7 +96,7 @@ public class DynamicBiseriation extends Biseriation {
 		DynamicBiseriation dynamicBiseriation = new DynamicBiseriation(
 				collection, distance, heuristic);
 		dynamicBiseriation.calculateBiseriationOfStaticPart();
-
+		
 		while (args.length>argc){
 			String collectionUpdate = args[argc++];
 			dynamicBiseriation.addCollectionUpdate(collectionUpdate);
@@ -132,10 +132,7 @@ public class DynamicBiseriation extends Biseriation {
 	public void addCollectionUpdate(String collectionUpdate)
 			throws IOException {
 		updates = SparseVector.readSparseMatrix(collectionUpdate);
-	}
-
-	private void addRow(VectorNode[] vector) {
-		rowSeriation.foldInNewInstance(vector);
+		rowSeriation.mergeUpdates(updates);
 	}
 
 	/**
@@ -146,7 +143,7 @@ public class DynamicBiseriation extends Biseriation {
 	 */
 	public void iterativelyUpdate() throws IOException {
 		for (int i = 0; i < updates.length; i++) {
-			addRow(updates[i]);
+			rowSeriation.foldInNewInstance(updates[i]);
 			updateFeatureSpaceSeriation();
 		}
 		global_update_iteration += updates.length;
